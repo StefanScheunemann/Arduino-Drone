@@ -52,7 +52,7 @@ Es muss darauf das die Richtungen der Motoren beachtet werden, da der Quadrocopt
 | hinten rechts | Motor 2     | gegen Uhrzeigersinn |
 | hinten links  | Motor 3     | Uhrzeigersinn       |
 | vorne links   | Motor 4     | gegen Uhrzeigersinn |  
-
+  
 In der Praxis sollte es so Aussehen  
 Uhrzeigersinn  
 ![alt text]()  
@@ -70,3 +70,14 @@ Als letztes kann über das Arduino ein Schutz angebracht werden, damit es nicht 
 ![alt text]()  
   
 ###4. Code<a name="Code"><a/>
+Um die Drohne verwenden zukönnen werden drei Arduino Sketches benötigt.  
+[1. Setup](#Setup)  
+[2. Calibration](#Calib)  
+[3. Flight Controller](#Flight)
+Der erste ist ein Setup, in dem alle Bauteile der Drohne überprüft werden und sowohl die Fernbedienung, als auch das Gyroskop für das Arduino kalibiriert werden. Die Ergebnisse der Kalibrierungen werden im EEPROM, dem Speicher des Arduinos, gespeichert. Das Programm läuft über dn seriellen Monitor des Arduinos.    
+Der zweite Sktech wird verwendet, um die Ergebnisse der Kalibrierung zu testen. Im seriellen Monitor können durch bestimmte Befehle unterschiedliche Daten aufgerufen werden, darauf gehe ich aber erst im letzten Teil dieser Anleitung ein, da dies sonst zu umfangreich wird [6. Der erste Start](#Erst).  
+Der dritte Sktech ist der flight controller, mit diesem wird die Drohne letztlich gesteuert. Es ist eine Sicherungsfunktion enthalten, aber trotzdem sollte beim Start immer ein Sicherheitsabstand eingehalten werden.  
+Alle diese drei Sketches müssen vom ersten zum dritten auf den Arduino geladen werden, ausgeführt werden und nur wenn keine Fehler während den Prgrammen auftauchen darf das nächste installiert werden. Bei nich Beachtung der Reihenfolge kann es zu schweren Fehlern kommen.  
+  
+####Setup<a name="Setup"><a/>
+
