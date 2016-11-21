@@ -98,19 +98,19 @@ Das zweite Programm, welches installiert werden muss, ist die Kablibrierung.
 Dieser Sketch unterscheidet sich stark vom Setup, es wird nichts auf dem EEPROM verändert.  
 Sobald der Sketch auf den Arduino geladen ist muss wieder der serielle Monitor geöffnet werden, es wird weiterhin die baud rate 57600 verwendet.  
 Nun gibt es mehrere Befehle, die ausgeführt werden können und zum überprüfen der Funktionen des Gyroskop, die Fernbedienung und die Schwingung der Motoren kann überprüft werden.  
-Wenn in den seriellen Monitor _a_ eingegeben wird, zeigt der serielle Monitor die Position des Gyroskops. Zu beachten ist, dass Yaw bedeutet, inwieweit der Quadrocopter auf dem Boden gedreht wurde und setzt sich selbstständig zurück in die Nullposition. Es sollte eine perfekte Nullstellung erreicht werden, da der Quadrocopter sonst nie ruhig in der Luft stehen kann.  
+Wenn in den seriellen Monitor **a** eingegeben wird, zeigt der serielle Monitor die Position des Gyroskops. Zu beachten ist, dass Yaw bedeutet, inwieweit der Quadrocopter auf dem Boden gedreht wurde und setzt sich selbstständig zurück in die Nullposition. Es sollte eine perfekte Nullstellung erreicht werden, da der Quadrocopter sonst nie ruhig in der Luft stehen kann.  
   
-Als nächstes wird in den seriellen Monitor _r_ eingegeben, mit diesem Befehl werden die Daten der Fernbedienung aufgerufen. Im seriellen Monitor werden nun vier unterschiedliche Daten angezeigt.  
+Als nächstes wird in den seriellen Monitor **r** eingegeben, mit diesem Befehl werden die Daten der Fernbedienung aufgerufen. Im seriellen Monitor werden nun vier unterschiedliche Daten angezeigt.  
 In der Nullstellung aller Steuerknüppel sollten solche Ergebnisse gezeigt werden. 
 ![alt text]()  
 Die Werte sollten sich zwischen 1000 und 2000 befinden, der Anstieg/Abfall der Werte sollte gleichmäßig sein und nicht springen, da es sonst später zu Problemen kommen. Minimale Abweichungen sind unproblematisch, es sollten nur keine Großen sein.  
   
-Mit dem Befehl __ kann entwededer von jedem Motor einzeln die verursachte Vibration überprüft werden, zu diesem Zweck sollte auf den Motoren Propeller befestigt werden. Im Idealfall liegt die Vibration unter 50, dies ist kein Referenzwert, der mit anderen Werten verglichen werden kann. Der Test sollte bei 50% Beschleunigung ablaufen, in dieser Position sollte der Quadrocopter knapp nicht abheben und es werden gute Ergebnisse erzeugt. Bei diesem Test ist größte Vorsicht geboten, der Quadrocopter kann schwere Verletzungen zufügen und es sollten mindestens _fünf Meter_ Sicherheitsabstand gehalten werden, ideal sind _zehn Meter_. Die genaue Benennung der Rotoren ist, zur Erinnerung welcher Motor an welcher Stelle am Quadrocopter ist: [Motorenanordnung]().  
+Mit den Befehlen **1-5** kann entwededer von jedem Motor einzeln die verursachte Vibration überprüft werden, zu diesem Zweck sollte auf den Motoren Propeller befestigt werden. Im Idealfall liegt die Vibration unter 50, dies ist kein Referenzwert, der mit anderen Werten verglichen werden kann. Der Test sollte bei 50% Beschleunigung ablaufen, in dieser Position sollte der Quadrocopter knapp nicht abheben und es werden gute Ergebnisse erzeugt. Bei diesem Test ist größte Vorsicht geboten, der Quadrocopter kann schwere Verletzungen zufügen und es sollten mindestens **fünf Meter** Sicherheitsabstand gehalten werden, ideal sind **zehn Meter**. Die genaue Benennung der Rotoren ist, zur Erinnerung welcher Motor an welcher Stelle am Quadrocopter ist: [Motorenanordnung]().  
   
-| Motor	    | Comman
-|-----------------:|
-| Motor 1	   |   			
-| Motor 2     |
-| Motor 3	   |
-| Motor 4	   |
-| Motor 1-4  |
+| Motor	    | Command |
+|-----------|:-------:|
+| Motor 1	  | 1       |   			
+| Motor 2   | 2       |
+| Motor 3	  | 3       |
+| Motor 4	  | 4       |
+| Motor 1-4 | 5       |
