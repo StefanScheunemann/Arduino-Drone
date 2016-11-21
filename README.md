@@ -82,7 +82,7 @@ Alle diese drei Sketches müssen vom ersten zum dritten auf den Arduino geladen 
   
 ####Setup<a name="Setup"><a/>
 Im Setup wird die gesamte Hardware für das Arduino kalibriert. Um dies zu tun muss der Setup Sketch auf den Arduino geladen werden und am PC im Arduino Programm der serielle Monitor geöffnet werden. Im seriellen Monitor muss die Baudrate auf 57600 eingestellt werden für diesen Vorgang.  
-Falls während dem Setup Fehler auftreten wird ein Fehlercode angezeigt, jeder Fehler ist dokumentiert und mit Lösungen versehen. Diese Lösungen werden im späteren Verlauf dieser Anleitung dokumentiert. [Abkürzung zu Fehlercodes](#Fehler) 
+Falls während dem Setup Fehler auftreten wird ein Fehlercode angezeigt, jeder Fehler ist dokumentiert und mit Lösungen versehen. Diese Lösungen werden im späteren Verlauf dieser Anleitung dokumentiert. [Abkürzung zu Fehlercodes](#Fehler)  
 Nun wird ein Programm Ablauf gezeigt, dem man als Nutzer nur folgen und die Befehle befolgen muss.  
 Zuerst werden die Endposition der Fernbedienung kalibriert. Dabei ist zu beachten das "nose down" auf dem rechten Steuerknüppel nach unten bedeutet. Wenn der Quadrocopter seine Nase hoch zieht bewegt der Quadrocopter sich nach hinten.  
 Sobald die Kalibrierung der Fernbedienung abgeschlossen ist beginnt die Kalibrierung des Gyroskops. Zu diesem Zweck wird das Programm den Nutzer dazu auffordern, den Quadrocopter in bestimmte Positionen zu bewegen. Dabei muss darauf geachtet werden, das die Richtigen Seiten bewegt werden, da es sonst später zu Fehlern kommen kann.  
@@ -114,3 +114,42 @@ Mit den Befehlen **1-5** kann entwededer von jedem Motor einzeln die verursachte
 | Motor 3	  | 3       |
 | Motor 4	  | 4       |
 | Motor 1-4 | 5       |
+  
+####Flight Controller<a name="Flight"><a/>
+Das dritte Programm ist das, dass letztendlich für das Fliegen verwendet wird. Dieser Sketch greift auf die Daten, die im EEPROM abgelegt wurden, zurück und verwendet sie als Grundlage der Berechnungen für die Stabilität. Die vorherigen Schritte müssen genau befolgt werden, da sonst Fehler beim Flug entstehen können.  
+Das Gyroskop gleicht beim Flug permanent den Quadrocopter aus, sodass zu keinem Zeitpunkt, wenn kein Befehl abgesehen von der Beschleunigung übertragen wird, der Quadrocopter in eine ungerade Position gerät.  
+Der Ablauf im Sketch hinter dieser Mechanik ist, dass das Gyroskop permanent die Position des Quadrocopters überprüft. Im Sketch ist festgelegt, dass in der Nullstellung des Gyroskops und der Fernbedienung ein Puls von 1500 an die ESCs gesendet wird. Die ESCs sind auch auf die Frequenz von 1000 bis 2000 kalibiriert.  
+Wenn nun der Winkel, oin dem sich der Quadrocopter relativ zum Boden befindet, verändert wird, so rechnet das Arduino eine definierte Antisteigung, also die Standartposition - die aktuelle Position, aus und ermittelt einen Gegenimpuls, der an die ESCs geschickt wird. Um dies anschaulicher zu erklären verwende ich einige Bilder.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##6. Erster Start<a name="Erst"><a/>
+Sobald der Sketch auf dem Arduino gespeichert ist, ist die Drohne flugbereit. Beim Start gilt es bestimmte Dinge zu beachten:  
+1. Um den Quadrocopter zu starten muss an der Fernbedienung der throttle stick in die untere, linke Ecke bewegt werden. Erst ab diesem Moment ist Sicherung deaktiviert.  
+2. Um den Quadrocopter auszuschalten muss der throttle sitck in die untere, rechte Ecke bewegt werden, dies löst die Sicherung aus und keine weiteren Befehle werden umgesetzt.  
+3. Sobald die Sicherung deaktiviert ist muss der Quadrocopter gestartet werden. Die ersten Sekunden ist der Ausgleich durch das Gyroskop deaktiviert, sodass die Drohne erstmal senkrecht starten kann und erst in der Luft sich ausgleicht. Auch sollte insofern zügig gestartet werden, dass ein schnelles Abheben auf mindestens 10-20cm gewährleistet ist und die Drohne sich nicht am Boden verfangen kann.
+4. Vor und während dem Flug ist Sicherheitsabstand einzuhalten. Ein Start aus der Hand ist zwingen zu vermeiden, da durch Windstöße, Fehler des Programms die Drohne aggressiv reagieren kann und somit den Nutzer schwer verletzen kann.  
+5. Es ist durchaus damit zu rechnen, dass erste Flugversuche fehlschlagen können. Es sollte von Beginn an eingeplant werden, dass einige Rotoren kaputt gehen. Um diese Probleme zu beheben müssen die PID Werte angepasst werden, wie dies möglich ist wird im nächsten Teil erklärt.
