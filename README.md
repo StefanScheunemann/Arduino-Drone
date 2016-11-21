@@ -73,11 +73,17 @@ Als letztes kann über das Arduino ein Schutz angebracht werden, damit es nicht 
 Um die Drohne verwenden zukönnen werden drei Arduino Sketches benötigt.  
 [1. Setup](#Setup)  
 [2. Calibration](#Calib)  
-[3. Flight Controller](#Flight)
+[3. Flight Controller](#Flight)  
+  
 Der erste ist ein Setup, in dem alle Bauteile der Drohne überprüft werden und sowohl die Fernbedienung, als auch das Gyroskop für das Arduino kalibiriert werden. Die Ergebnisse der Kalibrierungen werden im EEPROM, dem Speicher des Arduinos, gespeichert. Das Programm läuft über dn seriellen Monitor des Arduinos.    
 Der zweite Sktech wird verwendet, um die Ergebnisse der Kalibrierung zu testen. Im seriellen Monitor können durch bestimmte Befehle unterschiedliche Daten aufgerufen werden, darauf gehe ich aber erst im letzten Teil dieser Anleitung ein, da dies sonst zu umfangreich wird [6. Der erste Start](#Erst).  
 Der dritte Sktech ist der flight controller, mit diesem wird die Drohne letztlich gesteuert. Es ist eine Sicherungsfunktion enthalten, aber trotzdem sollte beim Start immer ein Sicherheitsabstand eingehalten werden.  
 Alle diese drei Sketches müssen vom ersten zum dritten auf den Arduino geladen werden, ausgeführt werden und nur wenn keine Fehler während den Prgrammen auftauchen darf das nächste installiert werden. Bei nich Beachtung der Reihenfolge kann es zu schweren Fehlern kommen.  
   
 ####Setup<a name="Setup"><a/>
-
+Im Setup wird die gesamte Hardware für das Arduino kalibriert. Um dies zu tun muss der Setup Sketch auf den Arduino geladen werden und am PC im Arduino Programm der serielle Monitor geöffnet werden. Im seriellen Monitor muss die Baudrate auf 57600 eingestellt werden für diesen Vorgang.  
+Falls während dem Setup Fehler auftreten wird ein Fehlercode angezeigt, jeder Fehler ist dokumentiert und mit Lösungen versehen. Diese Lösungen werden im späteren Verlauf dieser Anleitung dokumentiert. [Abkürzung zu Fehlercodes](#Fehler) 
+Nun wird ein Programm Ablauf gezeigt, dem man als Nutzer nur folgen und die Befehle befolgen muss.  
+Zuerst werden die Endposition der Fernbedienung kalibriert. Dabei ist zu beachten das "nose down" auf dem rechten Steuerknüppel nach unten bedeutet. Wenn der Quadrocopter seine Nase hoch zieht bewegt der Quadrocopter sich nach hinten.  
+Sobald die Kalibrierung der Fernbedienung abgeschlossen ist beginnt die Kalibrierung des Gyroskops. Zu diesem Zweck wird das Programm den Nutzer dazu auffordern, den Quadrocopter in bestimmte Positionen zu bewegen. Dabei muss darauf geachtet werden, das die Richtigen Seiten bewegt werden, da es sonst später zu Fehlern kommen kann.  
+Der letzte Schritt ist die Kontrolle der Status LED, diese sollte aufleuchten, wenn der Befehl dazu im seriellen Monitor angezeigt wird. Prinzipiell ist die LED nicht nötig, falls aber später Probleme auftreten kann an der Blinkfrequenz erkannt werden, um welchen Fehler es isch handelt und erfüllt somit eine wichtige Rolle.  
