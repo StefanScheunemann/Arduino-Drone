@@ -75,10 +75,16 @@ Um die Drohne verwenden zukönnen werden drei Arduino Sketches benötigt.
 [2. Calibration](#Calib)  
 [3. Flight Controller](#Flight)  
   
-Der erste ist ein Setup, in dem alle Bauteile der Drohne überprüft werden und sowohl die Fernbedienung, als auch das Gyroskop für das Arduino kalibiriert werden. Die Ergebnisse der Kalibrierungen werden im EEPROM, dem Speicher des Arduinos, gespeichert. Das Programm läuft über dn seriellen Monitor des Arduinos.    
-Der zweite Sktech wird verwendet, um die Ergebnisse der Kalibrierung zu testen. Im seriellen Monitor können durch bestimmte Befehle unterschiedliche Daten aufgerufen werden, darauf gehe ich aber erst im letzten Teil dieser Anleitung ein, da dies sonst zu umfangreich wird [6. Der erste Start](#Erst).  
+Der erste Sketch ist ein Setup, in dem alle Bauteile der Drohne überprüft werden und sowohl die Fernbedienung, als auch das Gyroskop für das Arduino kalibiriert werden. Die Ergebnisse der Kalibrierungen werden im EEPROM, dem Speicher des Arduinos, gespeichert. Das Programm läuft über den seriellen Monitor des Arduinos.    
+Der zweite Sktech wird verwendet, um die Ergebnisse der Kalibrierung zu testen. Im seriellen Monitor können durch bestimmte Befehle unterschiedliche Daten aufgerufen werden, darauf gehe ich aber erst im letzten Teil dieser Anleitung ein, da dies sonst zu umfangreich wird: [Der erste Start](#Erst).  
 Der dritte Sktech ist der flight controller, mit diesem wird die Drohne letztlich gesteuert. Es ist eine Sicherungsfunktion enthalten, aber trotzdem sollte beim Start immer ein Sicherheitsabstand eingehalten werden.  
-Alle diese drei Sketches müssen vom ersten zum dritten auf den Arduino geladen werden, ausgeführt werden und nur wenn keine Fehler während den Prgrammen auftauchen darf das nächste installiert werden. Bei nich Beachtung der Reihenfolge kann es zu schweren Fehlern kommen.  
+Alle diese drei Sketches müssen vom ersten zum dritten auf den Arduino geladen werden, ausgeführt werden und nur wenn keine Fehler während den Prgrammen auftauchen darf das nächste installiert werden. Bei nicht Beachtung der Reihenfolge kann es zu schweren Fehlern kommen.  
+  
+Der gesamte Code kann eingesehen und modifiziert werden. Der Code ist durch viele Kommentare verständlich gemacht und sollte verständlich sein. Inwiefern Modifikationen sinnvoll sind und wo diese vorgenommen werden sollten wird im später Verlauf dieser Dokumentation aufgegriffen.  
+Direkte Weiterleitungen zum Code:  
+[Setup]()  
+[Calibration]()  
+[Flight controller]()  
   
 ####Setup<a name="Setup"><a/>
 Im Setup wird die gesamte Hardware für das Arduino kalibriert. Um dies zu tun muss der Setup Sketch auf den Arduino geladen werden und am PC im Arduino Programm der serielle Monitor geöffnet werden. Im seriellen Monitor muss die Baudrate auf 57600 eingestellt werden für diesen Vorgang.  
@@ -119,7 +125,7 @@ Mit den Befehlen **1-5** kann entwededer von jedem Motor einzeln die verursachte
 Das dritte Programm ist das, dass letztendlich für das Fliegen verwendet wird. Dieser Sketch greift auf die Daten, die im EEPROM abgelegt wurden, zurück und verwendet sie als Grundlage der Berechnungen für die Stabilität. Die vorherigen Schritte müssen genau befolgt werden, da sonst Fehler beim Flug entstehen können.  
 Das Gyroskop gleicht beim Flug permanent den Quadrocopter aus, sodass zu keinem Zeitpunkt, wenn kein Befehl abgesehen von der Beschleunigung übertragen wird, der Quadrocopter in eine ungerade Position gerät.  
 Der Ablauf im Sketch hinter dieser Mechanik ist, dass das Gyroskop permanent die Position des Quadrocopters überprüft. Im Sketch ist festgelegt, dass in der Nullstellung des Gyroskops und der Fernbedienung ein Puls von 1500 an die ESCs gesendet wird. Die ESCs sind auch auf die Frequenz von 1000 bis 2000 kalibiriert.  
-Wenn nun der Winkel, oin dem sich der Quadrocopter relativ zum Boden befindet, verändert wird, so rechnet das Arduino eine definierte Antisteigung, also die Standartposition - die aktuelle Position, aus und ermittelt einen Gegenimpuls, der an die ESCs geschickt wird. Um dies anschaulicher zu erklären verwende ich einige Bilder.
+Wenn nun der Winkel, oin dem sich der Quadrocopter relativ zum Boden befindet, verändert wird, so rechnet das Arduino eine definierte Antisteigung, also die Standartposition - die aktuelle Position, aus und ermittelt einen Gegenimpuls, der an die ESCs geschickt wird. Um dies anschaulicher zu erklären verwende ich einige Bilder.  
 
 
 
@@ -150,6 +156,14 @@ Wenn nun der Winkel, oin dem sich der Quadrocopter relativ zum Boden befindet, v
 Sobald der Sketch auf dem Arduino gespeichert ist, ist die Drohne flugbereit. Beim Start gilt es bestimmte Dinge zu beachten:  
 1. Um den Quadrocopter zu starten muss an der Fernbedienung der throttle stick in die untere, linke Ecke bewegt werden. Erst ab diesem Moment ist Sicherung deaktiviert.  
 2. Um den Quadrocopter auszuschalten muss der throttle sitck in die untere, rechte Ecke bewegt werden, dies löst die Sicherung aus und keine weiteren Befehle werden umgesetzt.  
-3. Sobald die Sicherung deaktiviert ist muss der Quadrocopter gestartet werden. Die ersten Sekunden ist der Ausgleich durch das Gyroskop deaktiviert, sodass die Drohne erstmal senkrecht starten kann und erst in der Luft sich ausgleicht. Auch sollte insofern zügig gestartet werden, dass ein schnelles Abheben auf mindestens 10-20cm gewährleistet ist und die Drohne sich nicht am Boden verfangen kann.
-4. Vor und während dem Flug ist Sicherheitsabstand einzuhalten. Ein Start aus der Hand ist zwingen zu vermeiden, da durch Windstöße, Fehler des Programms die Drohne aggressiv reagieren kann und somit den Nutzer schwer verletzen kann.  
-5. Es ist durchaus damit zu rechnen, dass erste Flugversuche fehlschlagen können. Es sollte von Beginn an eingeplant werden, dass einige Rotoren kaputt gehen. Um diese Probleme zu beheben müssen die PID Werte angepasst werden, wie dies möglich ist wird im nächsten Teil erklärt.
+3. Sobald die Sicherung deaktiviert ist muss der Quadrocopter gestartet werden. Die ersten Sekunden ist der Ausgleich durch das Gyroskop deaktiviert, sodass die Drohne senkrecht starten kann und erst in der Luft sich ausgleicht. Auch sollte insofern zügig gestartet werden, dass ein schnelles Abheben auf mindestens 20cm gewährleistet ist und die Drohne sich nicht am Boden verfangen kann.
+4. Vor und während dem Flug ist Sicherheitsabstand einzuhalten. Ein Start aus der Hand ist zwingend zu vermeiden, da durch Windstöße oder Fehler des Programms die Drohne aggressiv reagieren kann und somit den Nutzer schwer verletzen kann.  
+5. Es ist durchaus damit zu rechnen, dass erste Flugversuche fehlschlagen können. Es sollte von Beginn an eingeplant werden, dass einige Propeller kaputt gehen. Die gegebenen PID Werte sollten einen stabilen Flugzu gewährleisten, es können aber dennoch Probleme auftreten. Um diese Probleme zu beheben müssen die PID Werte angepasst werden, wie dies möglich ist wurde im [vorherigen Teil](#) erklärt.  
+  
+Wenn der erste Flug erfolgreich verlaufen ist, sollten alle Teile des Quadrocopter überprüft werden. Selbst bei einem erfolgreichen Flug können Schäden entstehen, der Rahmen sollte besonders genau betrachtet werden, da durch die Motoren starke Kräfte auf diesen ausgewirkt werden. Falls Risse oder ähnliche Schäden auftreten müssen diese behoben werden, es darf nicht mit defekten Teilen geflogen werden.  
+  
+Ein derartiger Riss kann zum Beispiel so Aussehen  
+![alt text]()  
+  
+  
+##7. Fehlerodes<a name="Fehler"><a/>
