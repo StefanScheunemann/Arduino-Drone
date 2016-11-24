@@ -11,17 +11,14 @@ Ein komplett selbstgebauter Arduino Uno Quadrocopter
   
   
 ###1. Vorwort<a name="Vorw"></a>
-Dieser Quadrocopter ist im Rahmen eines Schulprojekts entstanden, es handelt sich nicht um ein professionelles,
-komplett ausgereiftes Industrieprodukt und Fehler im Code sind zu erwarten. Im Umgang mit der Drohne rate ich zu großer Vorsicht,
-es können durch diese ernsthafte Verletzung zugefügt werden.(Link noch enzufügen) Diese Anleitung beinhaltet alles, was man wissen
-muss, um einen Quadrocopter zu bauen, Fehler oder Ungenauigkeiten können aber enthalten sein.
+Dieser Quadrocopter ist im Rahmen eines Schulprojekts entstanden.  
+Es handelt sich nicht um ein professionelles, komplett ausgereiftes Industrieprodukt und Fehler im Code sind zu erwarten. Im Umgang mit der Drohne rate ich zu großer Vorsicht. Es können durch den Quadrocopter ernsthafte Verletzung zugefügt werden.(Link noch enzufügen)   Diese Anleitung beinhaltet alles, was man wissen muss, um einen Quadrocopter zu bauen. Fehler oder Ungenauigkeiten können aber enthalten sein.
   
   
 ###2. Teilliste<a name="Teil"></a>
-In meinem Fall ist das gesamte Drohnengestell mithilfe eines 3D Druckers entstanden, die dafür nötigen 3D Modelle sind repository
-enthalten und können frei verwendet werden, wer keinen 3D Drucker zur Verfügung hat kann ein fertiges Gestell kaufen, oder aus 
-anderen Materialien selber eins bauen. Zu diesem Thema gibt es im Internet eine große Menge an Informationen, weswegen ich nicht
-genauer darauf eingehen werde.  
+In meinem Fall ist das gesamte Drohnengestell mithilfe eines 3D Druckers entstanden.  
+Die dafür nötigen 3D Modelle sind repository enthalten und können frei verwendet werden. Wer keinen 3D Drucker zur Verfügung hat, kann ein fertiges Gestell kaufen, oder aus anderen Materialien selber eins bauen. Zu diesem Thema gibt es im Internet eine reichhaltige Menge an Informationen, die jederzeit abrufbar sind.  
+  
 Die Hardware die benötigt wird:  
 * [Arduino Uno]()
 * [Gyroscope]()
@@ -34,13 +31,15 @@ Die Hardware die benötigt wird:
   
   
 ###3. Zusammenbau<a name="Zusa"><a/>
-Zuerst muss der Rahmen des Auqdrocopters zusemmengebaut werden. Jeder Rahmen ist unterschiedlich aufgebaut, deswegen werde ich hier nicht weiter darauf eingehen. Es ist sinnvoll, die untere Platte erstmal nich zu befestigen um die Elektronik besser befestigen zu können.  
+Zuerst wird der Rahmen des Quqdrocopters zusemmengebaut.  
+Jeder Rahmen ist unterschiedlich aufgebaut, im Fall des beigelegten Rahemns ist der Aufbau leicht verständlich. Es ist sinnvoll, die untere Platte vorerst nicht zu befestigen, da es dann einfacher ist, die Elektronik einzubauen.  
 ![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Dokumentation/DSC_0005.JPG)  
-Sobald der Rahmen zusammengesetzt ist kann die Hardware verbaut werden.  
+Sobald der Rahmen zusammengesetzt ist, kann die Hardware verbaut werden.
 Der Quadrocopter kann mit den Teilen aus der [Teilliste](#Teil) gebaut werden, aber auch äquivalente Bauteile sollten funktionieren.  
 Bei der Verkabelung ist darauf zu achten, das die Schematics beachtet werden, da es sonst später zu Fehlfunktionen kommen kann.  
 ![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Schematics.jpg)  
-Es ist am einfachsten mit den ESCs zu beginnen, diese sollte möglichst weit vom Zentrum entfernt sein, da sie sonst später das Gyroskop stören könnten.  
+Es ist am einfachsten, mit den ESCs zu beginnen.
+Diese solltenmöglichst weit vom Zentrum entfernt sein, da sie sonst später das Gyroskop stören könnten.
 ![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Dokumentation/DSC_0007.JPG)  
 Sobald die ESCs befestigt sind dreht man den Rahem um und befestigt nur das Gyroskop und den Empfänger, Doppelseitiges Klebeband ist für diesen Zweck geeignet. Die Kabel an diesen Teilen sollten schon vor dem Befestigen am Rahem festgelötet werden, da dies sonst schwierig werden könnte.  
 ![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Dokumentation/DSC_0003_16.JPG)  
@@ -150,8 +149,8 @@ Falls noch weitere Unklarheiten bezüglich des flight controllers existieren kan
 5. PID Kalibrierung<a name="PID"><a/>
 Die PID Werte sind das Erste, was man sehen wird, sollte man den Code des flight controllers öffnen.  
 Diese PID Werte sind essentiell für die auto level Funktion des Quadrocpters, die das besondere an diesem gesamten Projekt ist. Zum Verständis ist es als erstes sinnvoll zu verstehen, wofür PID steht.  
-* P steht für proportinal, an dieser Stelle wird **Output des Gyroskops - Output des receivers * P(gain)** gerechnet. Wenn nun der Quadrocopter in einer 10° Lage gekippt zum Boden sich befindet und der Steuerknüppel auf 100% eingestellt ist, dann rechnet das Arduino **150-2000** aus. Die 150 resultieren aus der Rechnung 1°=15 => 10*15=150. Das Ergebnis der Rechnung ist 1850 * P(gain). 
-
+* P steht für proportinal, an dieser Stelle wird **Output des Gyroskops - Output des receivers * P(gain)** gerechnet. Wenn nun der Quadrocopter in einer 10° Lage gekippt zum Boden sich befindet und 1°=15 => 10*15=150. Nehmen wir nun an, von der Fernbedienung wird kein Befehl gesendet, der eine solche Veränderung der Lage herbeiführt, so wird der Quadrocopter nun versuchen, in die Standartposition von 1500 zurückzukehren. Aus der Rechnung ergibt sich also, dass der aktuelle Wert 1650 entspricht, aber 1500 angepeilt werden. Theoretisch sollte diese Funktion ausreichen, um den Quadrocopter in eine stabile Position zu bringen. Wenn man aber nur diese Funktion verwendet, so wird man feststellen, dass der Quadrocopter anfängt gleichmäßig zu 
+  
 
 
 
