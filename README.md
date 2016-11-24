@@ -12,7 +12,7 @@ Ein komplett selbstgebauter Arduino Uno Quadrocopter
   
 ###1. Vorwort<a name="Vorw"></a>
 Dieser Quadrocopter ist im Rahmen eines Schulprojekts entstanden.  
-Es handelt sich nicht um ein professionelles, komplett ausgereiftes Industrieprodukt und Fehler im Code sind zu erwarten. Im Umgang mit der Drohne rate ich zu großer Vorsicht. Es können durch den Quadrocopter ernsthafte Verletzung zugefügt werden.(Link noch enzufügen)   Diese Anleitung beinhaltet alles, was man wissen muss, um einen Quadrocopter zu bauen. Fehler oder Ungenauigkeiten können aber enthalten sein.
+Es handelt sich nicht um ein professionelles, komplett ausgereiftes Industrieprodukt und Fehler im Code sind zu erwarten. Im Umgang mit der Drohne rate ich zu großer Vorsicht. Es können durch den Quadrocopter ernsthafte Verletzung zugefügt werden, [hier eine realistische Einschätzung zu den Gefahren](http://www.technik-consulting.eu/Analyse/Gef%C3%A4hrdung_Drohne.html). Diese Anleitung beinhaltet alles, was man wissen muss, um einen Quadrocopter zu bauen. Fehler oder Ungenauigkeiten können aber enthalten sein.
   
   
 ###2. Teilliste<a name="Teil"></a>
@@ -39,13 +39,13 @@ Der Quadrocopter kann mit den Teilen aus der [Teilliste](#Teil) gebaut werden, a
 Bei der Verkabelung ist darauf zu achten, das die Schematics beachtet werden, da es sonst später zu Fehlfunktionen kommen kann.  
 ![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Schematics.jpg)  
 Es ist am einfachsten, mit den ESCs zu beginnen.
-Diese solltenmöglichst weit vom Zentrum entfernt sein, da sie sonst später das Gyroskop stören könnten.
+Diese sollten möglichst weit vom Zentrum entfernt sein, da sie sonst später das Gyroskop stören könnten.
 ![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Dokumentation/DSC_0007.JPG)  
-Sobald die ESCs befestigt sind dreht man den Rahem um und befestigt nur das Gyroskop und den Empfänger, Doppelseitiges Klebeband ist für diesen Zweck geeignet. Die Kabel an diesen Teilen sollten schon vor dem Befestigen am Rahem festgelötet werden, da dies sonst schwierig werden könnte.  
+Sobald die ESCs befestigt sind, dreht man den Rahem um und befestigt nur das Gyroskop und den Empfänger. Doppelseitiges Klebeband ist für diesen Zweck geeignet. Die Kabel an diesen Teilen sollten schon vor dem Befestigen am Rahem festgelötet werden, da dies sonst schwierig werden könnte.  
 ![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Dokumentation/DSC_0003_16.JPG)  
-Im nächsten Schritt wird das Arduino befestigt, wie genau das Arduino am Rahem befestigt werden kann muss jeder an seinem eigenen Rahem überprüfen, wenn der Rahmen aus den 3D Modellen verwendet wird ist eine spezielle Platte für diesen Zweck enthalten.  
+Im nächsten Schritt wird das Arduino befestigt. Wie genau das Arduino am Rahem befestigt werden kann, muss jeder an seinem eigenen Rahem überprüfen. Wenn der Rahmen aus den 3D Modellen verwendet wird, ist eine spezielle Platte für diesen Zweck enthalten.  
 ![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Dokumentation/DSC_0002.JPG)  
-Als letztes müssen die Motoren befestigt werden, dabei muss auf die Rotationsrichtung geachtet werden. Brushless Motoren besitzen drei Ausgänge, ein rotes Kabel, welches den Pluspol darstellt, ein schwarzes Kabel, welches den Minuspol darstellt und ein drittes Kabel, häufig gelb. Uns interessieren das Plus- und das Minuskabel, wenn man positiv mit positiv am ESC verbindet und negativ mit negativ dreht der Motor sich im Uhrzeigersinn, wenn positiv mit negativ und negativ mit positiv verbunden wird dreht der Motor sich gegen den Uhrzeigersinn. In allen Fällen muss auch das dritte Kabel angeschlossen werden, dies sollte immer an sein Äquivalent des ESCs angeschlossen werden.  
+Als Letztes werden die Motoren befestigt. Dabei muss auf die Rotationsrichtung geachtet werden. Brushless Motoren besitzen drei Ausgänge, ein rotes Kabel, welches den Pluspol darstellt, ein schwarzes Kabel, welches den Minuspol darstellt und ein drittes Kabel, häufig gelb. Uns interessieren das Plus- und das Minuskabel, wenn man positiv mit positiv am ESC verbindet und negativ mit negativ dreht der Motor sich im Uhrzeigersinn, wenn positiv mit negativ und negativ mit positiv verbunden wird dreht der Motor sich gegen den Uhrzeigersinn. In allen Fällen muss auch das dritte Kabel angeschlossen werden, dies sollte immer an sein Äquivalent des ESCs angeschlossen werden.  
 Es muss darauf das die Richtungen der Motoren beachtet werden, da der Quadrocopter später sonst nicht fliegen kann. 
   
 | Motor         | Bezeichnung | Richtung            |
@@ -55,13 +55,14 @@ Es muss darauf das die Richtungen der Motoren beachtet werden, da der Quadrocopt
 | hinten links  | Motor 3     | Uhrzeigersinn       |
 | vorne links   | Motor 4     | gegen Uhrzeigersinn |  
   
-In der Praxis sollte es so Aussehen  
+In der Praxis sieht es wie auf den folgenden Bildern aus.  
 Uhrzeigersinn  
 ![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Dokumentation/DSC_0020_5.JPG)  
 Gegen Uhrzeigersinn  
 ![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Dokumentation/DSC_0019_5.JPG)  
   
-Jetzt ist die gesamte Hardware verbaut, im nächsten Schritt muss diese verkabelt werden. Ich empfehle alle Verbindungen zu löten, da so eine feste Verbindung entsteht, aber auch z.B. Kabelhülsen sollten funktionieren. In jedem Fall muss sich streng an die Schematics gehalten werden!  
+Jetzt ist die gesamte Hardware verbaut. Im nächsten Schritt wird diese verkabelt.  
+Ich empfehle alle Verbindungen zu löten, da so eine feste Verbindung entsteht, aber auch z.B. Kabelhülsen funktionieren. In jedem Fall muss sich streng an die Schematics gehalten werden!  
 Zum besseren Verständis der Verbindungen  
 Verbindung der ESCs falls der Rahmen kein PDB (power distribuition board) enthält  
 ![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Dokumentation/DSC_0005_11.JPG)  
@@ -69,7 +70,7 @@ Kabel am Arduino
 ![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Dokumentation/DSC_0021_5.JPG)  
 ![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Dokumentation/DSC_0027_5.JPG)
   
-Als letztes kann über das Arduino ein Schutz angebracht werden, damit es nicht ungeschützt ist beim Transport/Flug. Bei den 3D Modellen liegt ein derartiger Schutz bei, ob man diesen verwendet oder selber etwas anderes baut spielt keine große Rolle solange es gegen Einschläge schützt.  
+Abschließend ist es von Vorteil, über das Arduino ein Schutz anzubringen, damit es nicht ungeschützt beim Transport/Flug ist. Bei den 3D Modellen liegt ein derartiger Schutz bei, ob man diesen verwendet oder selber etwas anderes baut, spielt keine große Rolle, solange es gegen Einschläge schützt.  
 ![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Dokumentation/DSC_0032_5.JPG)  
   
   
@@ -148,8 +149,8 @@ Falls noch weitere Unklarheiten bezüglich des flight controllers existieren kan
   
 5. PID Kalibrierung<a name="PID"><a/>
 Die PID Werte sind das Erste, was man sehen wird, sollte man den Code des flight controllers öffnen.  
-Diese PID Werte sind essentiell für die auto level Funktion des Quadrocpters, die das besondere an diesem gesamten Projekt ist. Zum Verständis ist es als erstes sinnvoll zu verstehen, wofür PID steht.  
-* P steht für proportinal, an dieser Stelle wird **Output des Gyroskops - Output des receivers * P(gain)** gerechnet. Wenn nun der Quadrocopter in einer 10° Lage gekippt zum Boden sich befindet und 1°=15 => 10*15=150. Nehmen wir nun an, von der Fernbedienung wird kein Befehl gesendet, der eine solche Veränderung der Lage herbeiführt, so wird der Quadrocopter nun versuchen, in die Standartposition von 1500 zurückzukehren. Aus der Rechnung ergibt sich also, dass der aktuelle Wert 1650 entspricht, aber 1500 angepeilt werden. Theoretisch sollte diese Funktion ausreichen, um den Quadrocopter in eine stabile Position zu bringen. Wenn man aber nur diese Funktion verwendet, so wird man feststellen, dass der Quadrocopter anfängt gleichmäßig zu 
+Diese PID Werte sind essentiell für die auto level Funktion des Quadrocpters, die das besondere an diesem gesamten Projekt ist. Zum Verständis ist es als erstes sinnvoll zu verstehen, wofür PID steht. Wer schnell zu dem Teil kommen will, in dem erklärt wird wo und wie man diese Werte anpassen sollte wird [hier]() weitergeleitet.  
+* P steht für proportinal, an dieser Stelle wird **Output des Gyroskops - Output des receivers * P(gain)** gerechnet. Wenn nun der Quadrocopter in einer 10° Lage gekippt zum Boden sich befindet und 1°=15 => 10*15=150. Nehmen wir nun an, von der Fernbedienung wird kein Befehl gesendet, der eine solche Veränderung der Lage herbeiführt, so wird der Quadrocopter nun versuchen, in die Standartposition von 1500 zurückzukehren. Aus der Rechnung ergibt sich also, dass der aktuelle Wert 1650 entspricht, aber 1500 angepeilt werden. Theoretisch sollte diese Funktion ausreichen, um den Quadrocopter in eine stabile Position zu bringen. Wenn man aber nur diese Funktion verwendet, so wird man feststellen, dass der Quadrocopter anfängt gleichmäßig zu schwingen. Bei jeder Korrektur wird der Quadrocopter von selbst übersteuern und nie in eine ruhige Position kommen. Um dieses Problem zu lösen werden weitere Funktionen eingebracht, die auf einer anderen Basis den Quadrocopter stabilisieren.  
   
 
 
