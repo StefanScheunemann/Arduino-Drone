@@ -1,5 +1,5 @@
 # Arduino-Drone
-Ein komplett selbstgebauter Arduino Uno Quadrocopter
+Eine Anleitung für den Bau eines Quadrocopters
 
 ##Inhalt
 [1. Vorwort](#Vorw)  
@@ -8,6 +8,7 @@ Ein komplett selbstgebauter Arduino Uno Quadrocopter
 [4. Code](#Code)  
 [5. PID-Kalibrierung](#PID)  
 [6. Erster Start](#Erst)  
+[7. Fehlercodes](#Fehler)
   
   
 ###1. Vorwort<a name="Vorw"></a>
@@ -20,14 +21,14 @@ In meinem Fall ist das gesamte Drohnengestell mithilfe eines 3D Druckers entstan
 Die dafür nötigen 3D Modelle sind repository enthalten und können frei verwendet werden. Wer keinen 3D Drucker zur Verfügung hat, kann ein fertiges Gestell kaufen, oder aus anderen Materialien selber eins bauen. Zu diesem Thema gibt es im Internet eine reichhaltige Menge an Informationen, die jederzeit abrufbar sind.  
   
 Die Hardware die benötigt wird:  
-* [Arduino Uno]()
-* [Gyroscope]()
-* [Brushless Motor]()
-* [ESC]()
-* [Lithium Akku]()
-* [Fernsteuerung + Empfänger]()
-* Wiederstände: [330](), [1k](), [1,5k]()
-* [Schrumpfschlauch]() (nicht zwingend nötig, hilft aber sehr beim Isolieren)
+* [Arduino Uno](https://www.arduino.cc/en/Main/arduinoBoardUno)
+* [Gyroscope](http://www.dx.com/p/gy-521-mpu6050-3-axis-acceleration-gyroscope-6dof-module-blue-154602?Utm_rid=78761898&Utm_source=affiliate#.WDmRYVxhN-4)
+* [Brushless Motor + ESC combo](http://eud.dx.com/product/a2212-1000kv-brushless-motor-w-30a-brushless-esc-1045-propeller-dji-f450-550-844413446)
+* [Lithium Akku](http://eud.dx.com/product/11-1v-2200mah-30c-li-polymer-battery-pack-for-450-helicopter-dji-phantom-1-450-quadcopter-844366131)
+* [Akku Ladegerät](http://www.dx.com/p/b3ac-2s-3s-lipo-balance-charger-black-ac-100-240v-103589?Utm_rid=78761898&Utm_source=affiliate#.WDmRYlxhN-4)
+* [Fernsteuerung + Empfänger](http://eud.dx.com/product/flysky-fs-t6-2-4ghz-6-ch-2-9-lcd-tx-transmitter-rx-receiver-radio-control-system-black-8-x-aa-844178448)
+* Wiederstände: [330](https://www.conrad.de/de/metallschicht-widerstand-330-axial-bedrahtet-0207-06-w-yageo-mf0207fte52-330r-1-st-1417595.html), [1k](https://www.conrad.de/de/metallschicht-widerstand-1-k-axial-bedrahtet-0207-06-w-yageo-mf0207fte52-1k-1-st-1417606.html), [1,5k](https://www.conrad.de/de/metallschicht-widerstand-15-k-axial-bedrahtet-0207-06-w-1-st-423386.html)
+* [Schrumpfschlauch](https://www.amazon.de/ChiliTec-12000058-Chilitec-Schrumpfschlauch-Sortiment-100-teilig/dp/B003H9CJ1Y/ref=pd_lpo_60_bs_lp_t_2?_encoding=UTF8&psc=1&refRID=713FAHSKXA3QCSARH8TW) (nicht zwingend nötig, hilft aber beim Isolieren)
   
   
 ###3. Zusammenbau<a name="Zusa"><a/>
@@ -123,7 +124,7 @@ Mit den Befehlen **1-5** kann entwededer von jedem Motor einzeln die verursachte
   
 | Motor	    | Command |
 |-----------|:-------:|
-| Motor 1	  | 1       |   			
+| Motor 1	  | 1       |
 | Motor 2   | 2       |
 | Motor 3	  | 3       |
 | Motor 4	  | 4       |
@@ -149,23 +150,46 @@ Falls noch weitere Unklarheiten bezüglich des flight controllers existieren kan
   
 5. PID Kalibrierung<a name="PID"><a/>
 Die PID Werte sind das Erste, was man sehen wird, sollte man den Code des flight controllers öffnen.  
-Diese PID Werte sind essentiell für die auto level Funktion des Quadrocpters, die das besondere an diesem gesamten Projekt ist. Zum Verständis ist es als erstes sinnvoll zu verstehen, wofür PID steht. Wer schnell zu dem Teil kommen will, in dem erklärt wird wo und wie man diese Werte anpassen sollte wird [hier]() weitergeleitet.  
+Diese PID Werte sind essentiell für die auto level Funktion des Quadrocpters, die das besondere an diesem gesamten Projekt ist. Zum Verständis ist es als erstes sinnvoll zu verstehen, wofür PID steht. Wer schnell zu dem Teil kommen will, in dem erklärt wird wo und wie man diese Werte anpassen sollte wird [hier](#PIDmod) weitergeleitet.  
   
-P steht für proportinal, an dieser Stelle wird **Output des Gyroskops - Output des receivers * P(gain)** gerechnet. Wenn nun der Quadrocopter in einer 10° Lage gekippt zum Boden sich befindet und 1°=15 => 10*15=150. Nehmen wir nun an, von der Fernbedienung wird kein Befehl gesendet, der eine solche Veränderung der Lage herbeiführt, so wird der Quadrocopter nun versuchen, in die Standartposition von 1500 zurückzukehren. Aus der Rechnung ergibt sich also, dass der aktuelle Wert 1650 entspricht, aber 1500 angepeilt werden. Theoretisch sollte diese Funktion ausreichen, um den Quadrocopter in eine stabile Position zu bringen. Wenn man aber nur diese Funktion verwendet, so wird man feststellen, dass der Quadrocopter anfängt gleichmäßig zu schwingen. Bei jeder Korrektur wird der Quadrocopter von selbst übersteuern und nie in eine ruhige Position kommen. Um dieses Problem zu lösen werden weitere Funktionen eingebracht, die auf einer anderen Basis den Quadrocopter stabilisieren.  
+####Theoretische Erklärung der PID Werte  
   
-
-
-
-
-
-
-
-
-
-
-
-
-
+**P** steht für proportinal, an dieser Stelle wird **Output des Gyroskops - Output des receivers * P(gain)** gerechnet, oder auch  
+(gyro - receiver) * P (gain). Wenn nun der Quadrocopter in einer 10° Lage gekippt zum Boden sich befindet und 1°=15 => 10*15=150. Nehmen wir nun an, von der Fernbedienung wird kein Befehl gesendet, der eine solche Veränderung der Lage herbeiführt, so wird der Quadrocopter nun versuchen, in die Standartposition von 1500 zurückzukehren. Aus der Rechnung ergibt sich also, dass der aktuelle Wert 1650 entspricht, aber 1500 angepeilt werden. Theoretisch sollte diese Funktion ausreichen, um den Quadrocopter in eine stabile Position zu bringen. Wenn man aber nur diese Funktion verwendet, so wird man feststellen, dass der Quadrocopter anfängt gleichmäßig zu schwingen. Bei jeder Korrektur wird der Quadrocopter von selbst übersteuern und nie in eine ruhige Position kommen. Um dieses Problem zu lösen werden weitere Funktionen eingebracht, die auf einer anderen Basis den Quadrocopter stabilisieren.  
+  
+**I** steht für Intergral, in dieser Funktion wird  
+I(output) + ((gyro - receiver) * I(gain). Wenn man nun also wieder von 10° relativer Steigung Nullpunkt ausgeht, dann wird bei einem Wert von I = 1 die Rechnung I(output), jetzt noch 0 + ((150 - 0), da von der Fernbedienung kein Befehl gesendet wird, * I(gain), was als 1 definiert wurde, gerechnet und es kommt eine Ergebnis von 150 raus, was der Korrketur entspricht, die ausgeführt werden muss.  
+In der nächsten Rechnung wird 150(der output der letzten Rechnung) + ((150 - 0) * I(gain, was als 1 definiert bleibt), gerechnet.  
+Im Ergebnis bedeutet dies, dass selbst wenn die Steigung konstant ist und der Winkel nicht verändert wird, die Korrektur immer stärker wird, bis wieder der Nullpunkt erreicht ist, an der diese Rechnung sich wieder auf 0 zurücksetzt, da sobald der Winkel = 0° ist und von der Fernbedienung kein Befehl gesendet wird das Ergebnis der Rechnung gleich 0 ist.  
+Wenn nur diese Rechnung verwendet wird, kann wieder festgestellt werden, das der Quadrocopter überkompensiert und somit immernoch keine stabile Haltung in der Luft erreicht werden kann. Der Quadrocopter wird mit nur dieser Funktion, ähnlich wie bei der ersten von einer Seite zur anderen Schwingen, doch passiert dies deutlich langsamer. Um nun eine stabiele Position zu erreichen, ist eine weitere Funktion nötig, die das Überkompensieren verhindert.  
+  
+**D** steht für Derivative, diese Funktion unterscheidet sich von den vorherigen, als dass sie nur auf eine Veränderung eine einmalige Korrkektur ausgibt und nicht, wie die anderen Funktionen, konstant gegen die Steigung gegenarbeitet.  
+(gyro - receiver - gyro(prev) - receiver(prev)) * D(gain). Wenn man nun wieder davon ausgeht, dass D = 1 definiert ist, dann ergibt sich bei einer Steigung von 10° im Intervall davor eine Steigung von 0°
+(150 - 0 - 0 - 0) * 1, das Ergebnis wäre eine Korrektur von 150. Wenn man nun aber im nächsten Messintervall weiterhin die Position von 10° verwendet, dann ergibt sich  
+(150 - 0 - 150 - 0) * 1, das Ergebnis dieser Rechnung wäre 0. Diese Funktion verursacht also nur eine Korrektur, wenn die Position zwischen zwei Intervallen sich verändert, ansonsten ist das Ergebnis immer 0.  
+Wenn nun durch die anderen beiden Funktionen eine Überkompensation stattfindet, dann sendet diese Funktion eine einzelne Korrektur, die den Quadrocopter wieder ausgleicht und in die waagerechte Position regelt.  
+  
+Um es anschaulicher zu machen habe ich eine Google Tabelle mit den Rechnung erstellt. Die Diagramme zeigen die Korrekturbefehle, die von den Funktionen gesendet werden. Auch kann das Dokument heruntergeladen werden und mit den PID Werte experemntiert werden, wie diese sich verändern, wenn die gain-Werte veärndert werden. In dem Dokument liegen zwischen jedem Messungsinvtervall 4 Millisekunden, mit diesem Wert arbeitet auch das Arduino im flight controller. Die Rechnung des PID controllers finden im flight controller in Zeile 424 statt, das verändern der PID Werte wird aber in Zeile 9 - 11 durchgeführt.  
+  
+**[Link zur Tabelle](https://docs.google.com/spreadsheets/d/1bJNEvERLeVwe6B2JFlEnVjHe6nW1A6QOTmVpb9kBsjY/edit?usp=sharing)**  
+  
+Praktische Anwendung der PID Werte<a name="PIDmod"><a/a>  
+  
+Wenn man nun weiss, wie der PID controller funktioniert, kann man beginnen die gain Werte zu modifizieren.  
+Jeder Quadrocopter hat eine andere Struktur und reagiert anders auf die Korrekturen, deswegen **müssen** die PID werte manuell angepasst werden und nach jedem Umbau oder größerer Reperatur muss die Kalibrierung neu erfolgen.  
+Die im Programm angegeben PID Werte sind nicht allgemein gültig, mein Quadrocopter funktioniert mit diesen aber am besten.  
+  
+Für die folgende Prozedur empfehle ich es, Sicherheitsanschuhe im ersten bei der Kalibrierung des D Wertes Sicherheitshandschuhe anzuziehen, um Verletzungen zu vermeiden.  
+  
+Um die Kalibrierung zu beginnen müssen im flight controller die PID Werte für roll, Zeile 9 bis 11) auf 0 gesetzt werden. Die Kalibrierung verläuft am besten, wenn man mit dem D Wert beginnt. Dies tut man, indem in Zeile 11 der Wert für D nun von 0 auf 3 erhöht wird. Mit dieser Veränderung wird der Sketch auf den Quadrocopter übetragen. Nun greift man den Quadrocopter fest in der Mitte und beginnt den Schub zu erhöhen. Der Schub wird solange erhöht, bis der Punkt erreicht ist, an dem der Quadrocopter **fast** vom Boden abhebt. Jetzt muss der Quadrocopter in alle Richtungen geneigt werden, der Quadrocopter sollte sich stabiel anfühlen und nicht ruhelos. Nun erhöht man den D Wert immer weiter in Schritten von 1 und testet jedes mal, bis der Quadrocopter sich unruhig anfühlt und beginnt, sich ungleichmäßig zu verhalten. Die Unruhre sollte bei +-20 einsetzen. Wenn dieser Punkt erreicht ist zieht man vom D Wert 25% wieder ab und erhält einen Wert, bei dem der Quadrocopter sich ruhig verhält.  
+  
+Als nächstes wird dieser Vorgang für den P Wert wiederholt, statt einer Erhöhung von 1 pro Versuch, sollte diesmal eine Steigerung von 0.2 verwendet werden. An diesem Punkt muss der Quadrocopter auch nicht mehr in der hand gehalten werden, auf einer Grasfläche kann vorsichtig geflogen werden. Wenn wieder der Punkt erreicht ist, an dem der Quadrocopter sich unruhig verhält wird der Wert um 50% reduziert und erhält somit einen stabilen P Wert.  
+  
+Im letzten Schritt wird der I Wert erhöht, dies findet in Schritten von 0.01 statt. Man wird feststellen, das der Quadrocopter immer stabiler fliegt. Wieder wird der Quadrocopter ab einem bestimmten Wert sich unruhig verhalten, an diesem Punkt wird der I Wert wieder um 50% reduziert.  
+  
+Wenn diese Kalibrierung abgeschlossen ist erhält man einen stabil fliegenden Quadrocopter, es darf aber nich vergessen werden, dass nach jedem Umbau und jeder Reperatur diese Prozedur wiederholt werden sollte.  
+  
+  
 ##6. Erster Start<a name="Erst"><a/>
 Sobald der Sketch auf dem Arduino gespeichert ist, ist die Drohne flugbereit. Beim Start gilt es bestimmte Dinge zu beachten:  
 1. Um den Quadrocopter zu starten muss an der Fernbedienung der throttle stick in die untere, linke Ecke bewegt werden. Erst ab diesem Moment ist Sicherung deaktiviert.  
@@ -180,4 +204,41 @@ Ein derartiger Riss kann zum Beispiel so Aussehen
 ![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Dokumentation/DSC_0031_5.JPG)  
   
   
-##7. Fehlerodes<a name="Fehler"><a/>
+##7. Fehlercodes<a name="Fehler"><a/>
+Die Fehlercodes beziehen sich auf das Setup und die Kalibrierung, jeder mögliche Fehler ist in dieser Sektion dokumentiert.  
+  
+####Error 1: No valid receiver signals found  
+Der Empfänger sendet ugütlige Signale, akzeptiert werden Signale mit einem Puls von zwischen 900 und 2100.  
+Um das Problem zu lösen muss überprüft werden, ob der Empfänger richtig mit dem Arduino verbunden ist. Die Channel 1 bis 4 müssen mit den Pins 8 bis 12 verbunden werden. Die Reihenfolge spielt dabei keine Rolle.  
+  
+####Error 2: No stick movement detected in the last 30 seconds  
+Das Arduino registriert keine gültigen Signale von der Fernbedienung.  
+Die Fernbedienung soltle aus und wieder angeschaltet werden und die Steuerknüppel dürfen nicht zu ruckartig bewegt werden.  
+  
+####Error 3: No gyro device found  
+Das Gyroskop kann nicht vom Arduino identifiziert werden.  
+Der Sketch funktioniert mit dem MPU 6050, andere Gyroskope sind nicht getestet. Falls ein anderes Gyroskop verwendet wird, dass nicht mit 5Volt sonder mit 3,3Volt kompatibel ist, muss die Stromzufuhr verändert werden.
+Falls der Fehler mit dem MPU 6050 auftaucht, muss die Verkabelung an diesem überprüft werden, diese sollte so aussehen  
+  
+| Arduino	  | Gyro    |
+|-----------|:-------:|
+| GND       | GND     |
+| 5V        | Vin/Vss |
+| SDA/A4    | SDA     |
+| SCL/A5    | SCL     |
+  
+####Error 4: No angular motion is detected in the last 10 seconds  
+Wenn der Quadrocopter beim Setup nicht mindestens 30° in die richtige Richtung gekippt werd, entsteht diese Fehlermeldung.  
+Innerhalb ovn 10 Sekunden muss der Quadrocopter auf der angegebenen Seite um 45° gekippt werden. Zu diesem Zweck der der Quadrocopter nicht bewegt, sondern nur gekippt werden, da die Werte osnst ungültig sind.  
+  
+####Error 5: EEPROM verification failed  
+Sobald das Setup abgeschlossen ist werden alle gemessenen Daten im internet Speicher des Arduino Uno, dem EEPROM, gespeichert. Sollte dabei ein Fehler auftreten erscheint dieser Fehler.  
+Es sollte überprüft werden, ob eine stabiele Stromversorgung mit 5V gewärleistet ist, da es sonst zu Fehlern beim Speichern kommen kann. Wenn der Fehler weiterhin besteht ist der Speicher des Arduino corrupted und sollte formatiert werden.  
+  
+####Error 6: Receiver channel verification failed  
+Dieser Fehler tritt auf, falls ein Steuerknüppel für mehrere Funktoinen definiert ist.  
+Es sollte beim Setup darauf geachtetet werden, dass immer nur ein Steuerknüppel bewegt wird und nicht mehrere gleichzeigt. Sollte das Problem weiter bestehen muss die Fernbedienung neu kalibirert werden.  
+  
+####Error 7: Gyro exes verification failed  
+Wenn beim überprüfen der Achsen des Gyroskops an einer Stelle mehrere Achsen gleichzeitg erkannt werden, entsteht dieser Fehler.  
+Um diesen Fehler zu vermeiden sollte beim Setup darauf geachtet werden, dass wenn der Quadrocopter in eine bestimmte Richtung gekippt werden soll immer nur in genau dies Richtung gekippt wird und nicht in mehrere gleichzeitig.  
