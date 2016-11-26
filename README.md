@@ -103,9 +103,10 @@ Zuerst werden die Endposition der Fernbedienung kalibriert. Dabei ist zu beachte
 Sobald die Kalibrierung der Fernbedienung abgeschlossen ist beginnt die Kalibrierung des Gyroskops. Zu diesem Zweck wird das Programm den Nutzer dazu auffordern, den Quadrocopter in bestimmte Positionen zu bewegen. Dabei muss darauf geachtet werden, das die Richtigen Seiten bewegt werden, da es sonst später zu Fehlern kommen kann.  
 Der letzte Schritt ist die Kontrolle der Status LED, diese sollte aufleuchten, wenn der Befehl dazu im seriellen Monitor angezeigt wird. Prinzipiell ist die LED nicht nötig, falls aber später Probleme auftreten kann an der Blinkfrequenz erkannt werden, um welchen Fehler es isch handelt und erfüllt somit eine wichtige Rolle.  
   
-Nun sollte das Programm anzeigen, dass der Vorgang abgeschlossen ist und der serielle Monitor kann geschlossen werden.  
+Nun sollte das Programm anzeigen, dass der Vorgang beendet ist und der serielle Monitor kann geschlossen werden.  
 An dieser Stelle ist das Setup abgeschlossen, es kann zum nächsten Schritt übergegangen werden.  
-Wer aber noch daran interessiert ist, wie der Code aufgebaut ist und wie die Informationen im EEPROM gespeichert werden, kann an [dieser Stelle]() im Code lesen, alle Informationen sind Open Source und es darf daran alles verändert werden, doch macht es bei diesem Teil wenig Sinn etwas zu modifizieren, im späteren Verlauf wird dieser Schritt noch wichtiger.  
+Wer aber noch daran interessiert ist, wie der Code aufgebaut ist und wie die Informationen im EEPROM gespeichert werden kann den Code frei verwenden und modifizieren, alle Informationen sind Open Source und es darf daran alles verändert werden, doch macht es in diesem Sktech wenig Sinn, etwas zu modifizieren.  
+Im späteren Verlauf wird das modifizieren noch wichtiger.
 Der Code ist zum besseren Verständis mit Kommentaren versehen, es sollte nicht nötig sein, sich groß einlesen zu müssen, um den Inhalt zu verstehen.  
   
 #####Calibration<a name="Calib"><a/>
@@ -197,6 +198,7 @@ Sobald der Sketch auf dem Arduino gespeichert ist, ist die Drohne flugbereit. Be
 3. Sobald die Sicherung deaktiviert ist muss der Quadrocopter gestartet werden. Die ersten Sekunden ist der Ausgleich durch das Gyroskop deaktiviert, sodass die Drohne senkrecht starten kann und erst in der Luft sich ausgleicht. Auch sollte insofern zügig gestartet werden, dass ein schnelles Abheben auf mindestens 20 Centimeter gewährleistet ist und die Drohne sich nicht am Boden verfangen kann.
 4. Vor und während dem Flug ist Sicherheitsabstand einzuhalten. Ein Start aus der Hand ist zwingend zu vermeiden, da durch Windstöße oder Fehler des Programms die Drohne aggressiv reagieren kann und somit den Nutzer schwer verletzen kann.  
 5. Es ist durchaus damit zu rechnen, dass erste Flugversuche fehlschlagen. Es sollte von Beginn an eingeplant werden, dass einige Propeller kaputt gehen. Die gegebenen PID Werte sollten einen stabilen Flugzu gewährleisten, es können aber dennoch Probleme auftreten. Um diese Probleme zu beheben müssen die PID Werte angepasst werden, wie dies möglich ist wurde im [vorherigen Teil](#) erklärt.  
+6. Die eingebaute LED hat zwei Funktionen. Wenn die LED permanent leuchtet bedeutet dies, dass der Akku unter 25% Leistung gefallen ist. Wenn die LED schnell blinkt, konnte keine Verbindung hergestellt werden, in diesem Fall sollte einige Sekunden gewartet werden.  
   
 Wenn der erste Flug erfolgreich verlaufen ist, sollten alle Teile des Quadrocopter überprüft werden. Selbst bei einem erfolgreichen Flug können Schäden entstehen, der Rahmen sollte besonders genau betrachtet werden, da durch die Motoren starke Kräfte auf diesen ausgewirkt werden. Falls Risse oder ähnliche Schäden auftreten müssen diese behoben werden, es darf nicht mit defekten Teilen geflogen werden.  
   
