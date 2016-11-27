@@ -34,18 +34,18 @@ Die Hardware die benötigt wird:
 ###3. Zusammenbau<a name="Zusa"><a/>
 Zuerst wird der Rahmen des Quqdrocopters zusemmengebaut.  
 Jeder Rahmen ist unterschiedlich aufgebaut, im Fall des beigelegten Rahemns ist der Aufbau leicht verständlich. Es ist sinnvoll, die untere Platte vorerst nicht zu befestigen, da es dann einfacher ist, die Elektronik einzubauen.  
-![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Dokumentation/DSC_0005.JPG)  
+![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Bilder/DSC_0005.JPG)  
 Sobald der Rahmen zusammengesetzt ist, kann die Hardware verbaut werden.
 Der Quadrocopter kann mit den Teilen aus der [Teilliste](#Teil) gebaut werden, aber auch äquivalente Bauteile sollten funktionieren.  
 Bei der Verkabelung ist darauf zu achten, das die Schematics beachtet werden, da es sonst später zu Fehlfunktionen kommen kann.  
-![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Schematics.jpg)  
+![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Teilliste%20%2B%20Schematics/Schematics.jpg)  
 Es ist am einfachsten, mit den ESCs zu beginnen.
 Diese sollten möglichst weit vom Zentrum entfernt sein, da sie sonst später das Gyroskop stören könnten.
-![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Dokumentation/DSC_0007.JPG)  
+![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Bilder/DSC_0007.JPG)  
 Sobald die ESCs befestigt sind, dreht man den Rahem um und befestigt nur das Gyroskop und den Empfänger. Doppelseitiges Klebeband ist für diesen Zweck geeignet. Die Kabel an diesen Teilen sollten schon vor dem Befestigen am Rahem festgelötet werden, da dies sonst schwierig werden könnte.  
-![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Dokumentation/DSC_0003_16.JPG)  
+![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Bilder/DSC_0003_16.JPG)  
 Im nächsten Schritt wird das Arduino befestigt. Wie genau das Arduino am Rahem befestigt werden kann, muss jeder an seinem eigenen Rahem überprüfen. Wenn der Rahmen aus den 3D Modellen verwendet wird, ist eine spezielle Platte für diesen Zweck enthalten.  
-![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Dokumentation/DSC_0002.JPG)  
+![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Bilder/DSC_0002.JPG)  
 Als Letztes werden die Motoren befestigt. Dabei muss auf die Rotationsrichtung geachtet werden. Brushless Motoren besitzen drei Ausgänge, ein rotes Kabel, welches den Pluspol darstellt, ein schwarzes Kabel, welches den Minuspol darstellt und ein drittes Kabel, häufig gelb. Uns interessieren das Plus- und das Minuskabel, wenn man positiv mit positiv am ESC verbindet und negativ mit negativ dreht der Motor sich im Uhrzeigersinn, wenn positiv mit negativ und negativ mit positiv verbunden wird dreht der Motor sich gegen den Uhrzeigersinn. In allen Fällen muss auch das dritte Kabel angeschlossen werden, dies sollte immer an sein Äquivalent des ESCs angeschlossen werden.  
 Es muss darauf das die Richtungen der Motoren beachtet werden, da der Quadrocopter später sonst nicht fliegen kann. 
   
@@ -58,21 +58,21 @@ Es muss darauf das die Richtungen der Motoren beachtet werden, da der Quadrocopt
   
 In der Praxis sieht es wie auf den folgenden Bildern aus.  
 Uhrzeigersinn  
-![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Dokumentation/DSC_0020_5.JPG)  
+![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Bilder/DSC_0020_5.JPG)  
 Gegen Uhrzeigersinn  
-![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Dokumentation/DSC_0019_5.JPG)  
+![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Bilder/DSC_0019_5.JPG)  
   
 Jetzt ist die gesamte Hardware verbaut. Im nächsten Schritt wird diese verkabelt.  
 Ich empfehle alle Verbindungen zu löten, da so eine feste Verbindung entsteht, aber auch z.B. Kabelhülsen funktionieren. In jedem Fall muss sich streng an die Schematics gehalten werden!  
 Zum besseren Verständis der Verbindungen  
 Verbindung der ESCs falls der Rahmen kein PDB (power distribuition board) enthält  
-![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Dokumentation/DSC_0005_11.JPG)  
+![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Bilder/DSC_0005_11.JPG)  
 Kabel am Arduino  
-![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Dokumentation/DSC_0021_5.JPG)  
-![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Dokumentation/DSC_0027_5.JPG)
+![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Bilder/DSC_0021_5.JPG)  
+![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Bilder/DSC_0027_5.JPG)
   
 Abschließend ist es von Vorteil, über das Arduino ein Schutz anzubringen, damit es nicht ungeschützt beim Transport/Flug ist. Bei den 3D Modellen liegt ein derartiger Schutz bei, ob man diesen verwendet oder selber etwas anderes baut, spielt keine große Rolle, solange es gegen Einschläge schützt.  
-![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Dokumentation/DSC_0032_5.JPG)  
+![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Bilder/DSC_0032_5.JPG)  
   
   
 ###4. Code<a name="Code"><a/>
@@ -91,9 +91,10 @@ Die Werte 1000 bis 2000 sind also nicht frei erfunden und nur als Variablen fest
   
 Der gesamte Code kann eingesehen und modifiziert werden. Der Code ist durch viele Kommentare verständlich gemacht und sollte verständlich sein. Inwiefern Modifikationen sinnvoll sind und wo diese vorgenommen werden sollten wird im später Verlauf dieser Dokumentation aufgegriffen.  
 Direkte Weiterleitungen zum Code:  
-[Setup](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Setup.ino)  
-[Calibration](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Calibrate.ino)  
-[Flight controller](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Flight%20controller.ino)  
+  
+[Setup](https://github.com/StefanScheunemann/Arduino-Drone/tree/master/Code/Setup)  
+[Calibration](https://github.com/StefanScheunemann/Arduino-Drone/tree/master/Code/Calibrate)  
+[Flight controller](https://github.com/StefanScheunemann/Arduino-Drone/tree/master/Code/Flight_controller)  
   
 ####Setup<a name="Setup"><a/>
 Im Setup wird die gesamte Hardware für das Arduino kalibriert. Um dies zu tun muss der Setup Sketch auf den Arduino geladen werden und am PC im Arduino Programm der serielle Monitor geöffnet werden. Im seriellen Monitor muss die Baudrate auf 57600 eingestellt werden für diesen Vorgang.  
@@ -117,11 +118,10 @@ Nun gibt es mehrere Befehle, die ausgeführt werden können und zum überprüfen
 Wenn in den seriellen Monitor **a** eingegeben wird, zeigt der serielle Monitor die Position des Gyroskops. Zu beachten ist, dass Yaw bedeutet, inwieweit der Quadrocopter auf dem Boden gedreht wurde und setzt sich selbstständig zurück in die Nullposition. Es sollte eine perfekte Nullstellung erreicht werden, da der Quadrocopter sonst nie ruhig in der Luft stehen kann.  
   
 Als nächstes wird in den seriellen Monitor **r** eingegeben, mit diesem Befehl werden die Daten der Fernbedienung aufgerufen. Im seriellen Monitor werden nun vier unterschiedliche Daten angezeigt.  
-In der Nullstellung aller Steuerknüppel sollten solche Ergebnisse gezeigt werden. 
-![alt text]()  
+  
 Die Werte sollten sich zwischen 1000 und 2000 befinden, der Anstieg/Abfall der Werte sollte gleichmäßig sein und nicht springen, da es sonst später zu Problemen kommen. Minimale Abweichungen sind unproblematisch, es sollten nur keine Großen sein.  
   
-Mit den Befehlen **1-5** kann entwededer von jedem Motor einzeln die verursachte Vibration überprüft werden, zu diesem Zweck sollte auf den Motoren Propeller befestigt werden. Im Idealfall liegt die Vibration unter 50, dies ist kein Referenzwert, der mit anderen Werten verglichen werden kann. Der Test sollte bei 50% Beschleunigung ablaufen, in dieser Position sollte der Quadrocopter knapp nicht abheben und es werden gute Ergebnisse erzeugt. Bei diesem Test ist größte Vorsicht geboten, der Quadrocopter kann schwere Verletzungen zufügen und es sollten mindestens **fünf Meter** Sicherheitsabstand gehalten werden, ideal sind **zehn Meter**. Die genaue Benennung der Rotoren ist, zur Erinnerung welcher Motor an welcher Stelle am Quadrocopter ist: [Motorenanordnung]().  
+Mit den Befehlen **1-5** kann entwededer von jedem Motor einzeln die verursachte Vibration überprüft werden, zu diesem Zweck sollte auf den Motoren Propeller befestigt werden. Im Idealfall liegt die Vibration unter 50, dies ist kein Referenzwert, der mit anderen Werten verglichen werden kann. Der Test sollte bei 50% Beschleunigung ablaufen, in dieser Position sollte der Quadrocopter knapp nicht abheben und es werden gute Ergebnisse erzeugt. Bei diesem Test ist größte Vorsicht geboten, der Quadrocopter kann schwere Verletzungen zufügen und es sollten mindestens **fünf Meter** Sicherheitsabstand gehalten werden, ideal sind **zehn Meter**.
   
 | Motor	    | Command |
 |-----------|:-------:|
@@ -146,7 +146,7 @@ Auch der Standartwert von α=1°=15 kann verändert werden. An diesem Wert zu mo
   
 Falls der Quadrocopter anders reagiert, als man erwarten würde und das Problem mit dem Gyroskop in verbindung stehen könnte kann die gesamte auto level Funktion deeaktiviert werden. Dies ist in Zeile 24 möglich. Es ist wichtig zu bedenken, dass mit dieser Einstellung auf false keine Flugunterstützung mehr existiert, es muss manuell gegengelenkt werden, im allgemeinen rate ich von einem Flug ohne auto level Funktion ab.  
   
-Falls noch weitere Unklarheiten bezüglich des flight controllers existieren kann jede Einzelheit [hier](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Flight%20controller.ino) im Code nachgelsesen werden. Der gesamte Code ist mit Kommentaren zum besseren Veständnis gefüllt und es sollte keien Stelle unverstädnlich bleiben.  
+Falls noch weitere Unklarheiten bezüglich des flight controllers existieren kann jede Einzelheit [hier](https://github.com/StefanScheunemann/Arduino-Drone/tree/master/Code/Flight_controller) im Code nachgelsesen werden. Der gesamte Code ist mit Kommentaren zum besseren Veständnis gefüllt.  
   
   
 5. PID Kalibrierung<a name="PID"><a/>
@@ -203,7 +203,7 @@ Sobald der Sketch auf dem Arduino gespeichert ist, ist die Drohne flugbereit. Be
 Wenn der erste Flug erfolgreich verlaufen ist, sollten alle Teile des Quadrocopter überprüft werden. Selbst bei einem erfolgreichen Flug können Schäden entstehen, der Rahmen sollte besonders genau betrachtet werden, da durch die Motoren starke Kräfte auf diesen ausgewirkt werden. Falls Risse oder ähnliche Schäden auftreten müssen diese behoben werden, es darf nicht mit defekten Teilen geflogen werden.  
   
 Ein derartiger Riss kann zum Beispiel so Aussehen  
-![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Dokumentation/DSC_0031_5.JPG)  
+![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Bilder/DSC_0031_5.JPG)  
   
   
 ##7. Fehlercodes<a name="Fehler"><a/>
