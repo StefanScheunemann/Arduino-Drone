@@ -27,7 +27,7 @@ Die Hardware, die benötigt wird:
 * [Lithium Akku](http://eud.dx.com/product/11-1v-2200mah-30c-li-polymer-battery-pack-for-450-helicopter-dji-phantom-1-450-quadcopter-844366131)
 * [Akku Ladegerät](http://www.dx.com/p/b3ac-2s-3s-lipo-balance-charger-black-ac-100-240v-103589?Utm_rid=78761898&Utm_source=affiliate#.WDmRYlxhN-4)
 * [Fernsteuerung + Empfänger](http://eud.dx.com/product/flysky-fs-t6-2-4ghz-6-ch-2-9-lcd-tx-transmitter-rx-receiver-radio-control-system-black-8-x-aa-844178448)
-* Wiederstände: [330](https://www.conrad.de/de/metallschicht-widerstand-330-axial-bedrahtet-0207-06-w-yageo-mf0207fte52-330r-1-st-1417595.html), [1k](https://www.conrad.de/de/metallschicht-widerstand-1-k-axial-bedrahtet-0207-06-w-yageo-mf0207fte52-1k-1-st-1417606.html), [1,5k](https://www.conrad.de/de/metallschicht-widerstand-15-k-axial-bedrahtet-0207-06-w-1-st-423386.html)
+* Widerstände: [330](https://www.conrad.de/de/metallschicht-widerstand-330-axial-bedrahtet-0207-06-w-yageo-mf0207fte52-330r-1-st-1417595.html), [1k](https://www.conrad.de/de/metallschicht-widerstand-1-k-axial-bedrahtet-0207-06-w-yageo-mf0207fte52-1k-1-st-1417606.html), [1,5k](https://www.conrad.de/de/metallschicht-widerstand-15-k-axial-bedrahtet-0207-06-w-1-st-423386.html)
 * [Schrumpfschlauch](https://www.amazon.de/ChiliTec-12000058-Chilitec-Schrumpfschlauch-Sortiment-100-teilig/dp/B003H9CJ1Y/ref=pd_lpo_60_bs_lp_t_2?_encoding=UTF8&psc=1&refRID=713FAHSKXA3QCSARH8TW) (nicht zwingend nötig, hilft aber beim Isolieren)
   
   
