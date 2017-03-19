@@ -9,11 +9,12 @@ Eine Anleitung für den Bau eines Quadrocopters
 [5. PID-Kalibrierung](#PID)  
 [6. Erster Start](#Erst)  
 [7. Fehlercodes](#Fehler)
+[8. Quellen](#Quel)
   
   
 ###1. Vorwort<a name="Vorw"></a>
 Dieser Quadrocopter ist im Rahmen eines Schulprojekts entstanden.  
-Es handelt sich nicht um ein professionelles, komplett ausgereiftes Industrieprodukt und Fehler im Code sind zu erwarten. Im Umgang mit der Drohne rate ich zu großer Vorsicht. Es können durch den Quadrocopter ernsthafte Verletzungen und Schäden zugefügt werden, [hier eine realistische Einschätzung zu den Gefahren](http://www.technik-consulting.eu/Analyse/Gef%C3%A4hrdung_Drohne.html). Diese Anleitung beinhaltet Alles, was man wissen muss, um einen Quadrocopter zu bauen. Fehler oder Ungenauigkeiten können aber enthalten sein.
+Es handelt sich nicht um ein professionelles, komplett ausgereiftes Industrieprodukt und Fehler im Code sind zu erwarten. Im Umgang mit der Drohne rate ich zu großer Vorsicht. Es können durch den Quadrocopter ernsthafte Verletzungen und Schäden zugefügt werden, [hier eine realistische Einschätzung zu den Gefahren](http://www.technik-consulting.eu/Analyse/Gef%C3%A4hrdung_Drohne.html). Diese Anleitung beinhaltet Alles, was man wissen muss, um einen Quadrocopter zu bauen. Fehler oder Ungenauigkeiten können aber enthalten sein. In den Quellen können genaue Angaben gefunden werden, von welchen Stellen Code und Rahmen übernommen wurden.  
   
   
 ###2. Teileliste<a name="Teil"></a>
@@ -250,3 +251,8 @@ Es sollte beim Setup darauf geachtetet werden, dass immer nur ein Steuerknüppel
 ####Error 7: Gyro exes verification failed  
 Wenn beim Überprüfen der Achsen des Gyroskops an einer Stelle mehrere Achsen gleichzeitg erkannt werden, entsteht dieser Fehler.  
 Um diesen Fehler zu vermeiden, sollte beim Setup darauf geachtet werden, dass wenn der Quadrocopter in eine bestimmte Richtung gekippt werden soll, immer nur in genau diese Richtung gekippt wird und nicht in mehrere gleichzeitig.  
+  
+  
+<h2>8. Quellen<a name="Quel"></a></h2>
+Der Code stammt von Herrn Brooking, eine Erklärung zu diesem und der Download können auf seiner [Website](http://www.brokking.net/ymfc-al_main.html) gefunden werden. Der Code ist nicht mein Gedankengut, alle Rechte gehören Herrn Brooking. Auch die schematic für den Schaltkreis in der Drohne stammt nicht von mir und kann auf der angegebenen Webstite gefunden werden.  
+Das verwendete 3D-Modell für den Rahmen des Quadrocopters kann auf Thingiverse [hier](http://www.thingiverse.com/thing:264955/#files) gefunden werden, es ist für jeden frei verfügbar. Das Modell wurde nicht von mir erstellt.
