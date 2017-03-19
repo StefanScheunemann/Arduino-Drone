@@ -8,8 +8,8 @@ Eine Anleitung für den Bau eines Quadrocopters
 [4. Code](#Code)  
 [5. PID-Kalibrierung](#PID)  
 [6. Erster Start](#Erst)  
-[7. Fehlercodes](#Fehler)
-[8. Quellen](#Quel)
+[7. Fehlercodes](#Fehler)  
+[8. Quellen](#Quel)  
   
   
 ###1. Vorwort<a name="Vorw"></a>
@@ -254,5 +254,5 @@ Um diesen Fehler zu vermeiden, sollte beim Setup darauf geachtet werden, dass we
   
   
 <h2>8. Quellen<a name="Quel"></a></h2>
-Der Code stammt von Herrn Brooking, eine Erklärung zu diesem und der Download können auf seiner [Website](http://www.brokking.net/ymfc-al_main.html) gefunden werden. Der Code ist nicht mein Gedankengut, alle Rechte gehören Herrn Brooking. Auch die schematic für den Schaltkreis in der Drohne stammt nicht von mir und kann auf der angegebenen Webstite gefunden werden.  
-Das verwendete 3D-Modell für den Rahmen des Quadrocopters kann auf Thingiverse [hier](http://www.thingiverse.com/thing:264955/#files) gefunden werden, es ist für jeden frei verfügbar. Das Modell wurde nicht von mir erstellt.
+Der Code stammt von Herrn Brooking, eine Erklärung zu diesem und der Download können auf seiner <a href="http://www.brokking.net/ymfc-al_main.html/">Website</a> gefunden werden. Der Code ist nicht mein Gedankengut, alle Rechte gehören Herrn Brooking. Auch die schematic für den Schaltkreis in der Drohne stammt nicht von mir und kann auf der angegebenen Webstite gefunden werden.  
+Das verwendete 3D-Modell für den Rahmen des Quadrocopters kann auf Thingiverse <a href="http://www.thingiverse.com/thing:264955/#files">hier</a> gefunden werden, es ist für jeden frei verfügbar. Das Modell wurde nicht von mir erstellt.
