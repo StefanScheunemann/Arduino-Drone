@@ -37,12 +37,13 @@
 <a id="inhalt" class="anchor" href="#inhalt" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Inhalt</h2>
 
 <p><a href="#Vorw">1. Vorwort</a><br>
-<a href="#Teil">2. Teileliste</a><br>
-<a href="#Zusa">3. Zusammenbau</a><br>
-<a href="#Code">4. Code</a><br>
-<a href="#PID">5. PID-Kalibrierung</a><br>
-<a href="#Erst">6. Erster Start</a><br>
-<a href="#Fehler">7. Fehlercodes</a></p>
+<a href="#Que">2. Teileliste</a><br>
+<a href="#Teil">3. Teileliste</a><br>
+<a href="#Zusa">4. Zusammenbau</a><br>
+<a href="#Code">5. Code</a><br>
+<a href="#PID">6. PID-Kalibrierung</a><br>
+<a href="#Erst">7. Erster Start</a><br>
+<a href="#Fehler">8. Fehlercodes</a></p>
 
 <h3>
 <a id="1-vorwort" class="anchor" href="#1-vorwort" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. Vorwort<a name="Vorw"></a>
@@ -51,8 +52,15 @@
 <p>Dieser Quadrocopter ist im Rahmen eines Schulprojekts entstanden.<br>
 Es handelt sich nicht um ein professionelles, komplett ausgereiftes Industrieprodukt und Fehler im Code sind zu erwarten. Im Umgang mit der Drohne rate ich zu großer Vorsicht. Es können durch den Quadrocopter ernsthafte Verletzungen und Schäden zugefügt werden, <a href="http://www.technik-consulting.eu/Analyse/Gef%C3%A4hrdung_Drohne.html">hier eine realistische Einschätzung zu den Gefahren</a>. Diese Anleitung beinhaltet Alles, was man wissen muss, um einen Quadrocopter zu bauen. Fehler oder Ungenauigkeiten können aber enthalten sein.</p>
 
+          
+<h2>2. Quellen<a name="Quel"></a></h2>
+<p>Der Code stammt von Herrn Brooking, eine Erklärung zu diesem und der Download können auf seiner <a href="http://www.brokking.net/ymfc-al_main.html/">Website</a> gefunden werden. Auf dieser befindet sich eine Erkärung für die Drohne.<br>
+Der Code ist nicht mein Gedankengut, alle Rechte gehören Herrn Brooking. Auch die schematic für den Schaltkreis in der Drohne stammt nicht von mir und kann auf der angegebenen Webstite gefunden werden.<br>
+Das verwendete 3D-Modell für den Rahmen des Quadrocopters kann auf Thingiverse <a href="http://www.thingiverse.com/thing:264955/#files">hier</a> gefunden werden, es ist für jeden frei verfügbar.<br>
+Das Modell wurde nicht von mir erstellt.</p>
+          
 <h3>
-<a id="2-teileliste" class="anchor" href="#2-teileliste" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. Teileliste<a name="Teil"></a>
+<a id="2-teileliste" class="anchor" href="#2-teileliste" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3. Teileliste<a name="Teil"></a>
 </h3>
 
 <p>In meinem Fall ist das gesamte Drohnengestell mithilfe eines 3D Druckers entstanden.<br>
@@ -74,7 +82,7 @@ Die dafür nötigen 3D Modelle sind repository enthalten und können frei verwen
 </ul>
 
 <h3>
-<a id="3-zusammenbau" class="anchor" href="#3-zusammenbau" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3. Zusammenbau<a name="Zusa"></a>
+<a id="3-zusammenbau" class="anchor" href="#3-zusammenbau" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4. Zusammenbau<a name="Zusa"></a>
 </h3>
 
 <p>Zuerst wird der Rahmen des Quadrocopters zusammengebaut.<br>
@@ -145,7 +153,7 @@ Kabel am Arduino<br>
 <img src="images/DSC_0032_5.JPG" alt="alt text">  </p>
 
 <h3>
-<a id="4-code" class="anchor" href="#4-code" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4. Code<a name="Code"></a>
+<a id="4-code" class="anchor" href="#4-code" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>5. Code<a name="Code"></a>
 </h3>
 
 <p>Um die Drohne verwenden zu können, werden drei Arduino Sketches benötigt.<br>
@@ -258,7 +266,7 @@ Die LED zeigt einen niedrigen Akkustand an, indem sie beginnt, durchgehend zu le
 <p>Falls noch weitere Unklarheiten bezüglich des flight controllers existieren kann jede Einzelheit <a href="https://github.com/StefanScheunemann/Arduino-Drone/tree/master/Code/Flight_controller">hier</a> im Code nachgelesen werden. Der gesamte Code ist mit Kommentaren zum besseren Veständnis gefüllt.  </p>
 
 <h2>
-<a id="5-pid-kalibrierung" class="anchor" href="#5-pid-kalibrierung" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>5. PID Kalibrierung<a name="PID"></a>
+<a id="5-pid-kalibrierung" class="anchor" href="#5-pid-kalibrierung" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>6. PID Kalibrierung<a name="PID"></a>
 </h2>
 
 <p>Die PID Werte sind das Erste, was man sehen wird, sollte man den Code des flight controllers öffnen.<br>
@@ -304,7 +312,7 @@ Die im Programm angegebenen PID-Werte sind nicht allgemein gültig. Mein Quadroc
 <p>Wenn diese Kalibrierung abgeschlossen ist, erhält man einen stabil fliegenden Quadrocopter. Es darf aber nicht vergessen werden, dass nach jedem Umbau und jeder Reparatur diese Prozedur wiederholt werden sollte.  </p>
 
 <h2>
-<a id="6-erster-start" class="anchor" href="#6-erster-start" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>6. Erster Start<a name="Erst"></a>
+<a id="6-erster-start" class="anchor" href="#6-erster-start" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>7. Erster Start<a name="Erst"></a>
 </h2>
 
 <p>Sobald der Sketch auf dem Arduino gespeichert ist, ist die Drohne flugbereit. Beim Start gilt es bestimmte Dinge zu beachten:<br>
@@ -321,7 +329,7 @@ Die im Programm angegebenen PID-Werte sind nicht allgemein gültig. Mein Quadroc
 <img src="images/DSC_0031_5.JPG" alt="alt text">  </p>
 
 <h2>
-<a id="7-fehlercodes" class="anchor" href="#7-fehlercodes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>7. Fehlercodes<a name="Fehler"></a>
+<a id="7-fehlercodes" class="anchor" href="#7-fehlercodes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>8. Fehlercodes<a name="Fehler"></a>
 </h2>
 
 <p>Die Fehlercodes beziehen sich auf das Setup und die Kalibrierung. Jeder mögliche Fehler ist in dieser Sektion dokumentiert.  </p>
