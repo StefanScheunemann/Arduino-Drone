@@ -3,21 +3,29 @@ Eine Anleitung für den Bau eines Quadrocopters
 
 ##Inhalt  
 [1. Vorwort](#Vorw)  
-[2. Teileliste](#Teil)  
-[3. Zusammenbau](#Zusa)  
-[4. Code](#Code)  
-[5. PID-Kalibrierung](#PID)  
-[6. Erster Start](#Erst)  
-[7. Fehlercodes](#Fehler)  
-[8. Quellen](#Quel)  
+[2. Quellen](#Quel)  
+[3. Teileliste](#Teil)  
+[4. Zusammenbau](#Zusa)  
+[5. Code](#Code)  
+[6. PID-Kalibrierung](#PID)  
+[7. Erster Start](#Erst)  
+[8. Fehlercodes](#Fehler)  
+
   
   
 ###1. Vorwort<a name="Vorw"></a>
 Dieser Quadrocopter ist im Rahmen eines Schulprojekts entstanden.  
 Es handelt sich nicht um ein professionelles, komplett ausgereiftes Industrieprodukt und Fehler im Code sind zu erwarten. Im Umgang mit der Drohne rate ich zu großer Vorsicht. Es können durch den Quadrocopter ernsthafte Verletzungen und Schäden zugefügt werden, [hier eine realistische Einschätzung zu den Gefahren](http://www.technik-consulting.eu/Analyse/Gef%C3%A4hrdung_Drohne.html). Diese Anleitung beinhaltet Alles, was man wissen muss, um einen Quadrocopter zu bauen. Fehler oder Ungenauigkeiten können aber enthalten sein. In den Quellen können genaue Angaben gefunden werden, von welchen Stellen Code und Rahmen übernommen wurden.  
+
+
+<h2>2. Quellen<a name="Quel"></a></h2>
+Der Code stammt von Herrn Brooking, eine Erklärung zu diesem und der Download können auf seiner <a href="http://www.brokking.net/ymfc-al_main.html/">Website</a> gefunden werden. Auf dieser befindet sich eine Erkärung für die Drohne.<br>
+Der Code ist nicht mein Gedankengut, alle Rechte gehören Herrn Brooking. Auch die schematic für den Schaltkreis in der Drohne stammt nicht von mir und kann auf der angegebenen Webstite gefunden werden.<br>
+Das verwendete 3D-Modell für den Rahmen des Quadrocopters kann auf Thingiverse <a href="http://www.thingiverse.com/thing:264955/#files">hier</a> gefunden werden, es ist für jeden frei verfügbar.<br>
+Das Modell wurde nicht von mir erstellt.
   
   
-###2. Teileliste<a name="Teil"></a>
+###3. Teileliste<a name="Teil"></a>
 In meinem Fall ist das gesamte Drohnengestell mithilfe eines 3D Druckers entstanden.  
 Die dafür nötigen 3D Modelle sind repository enthalten und können frei verwendet werden. Wer keinen 3D Drucker zur Verfügung hat, kann ein fertiges Gestell kaufen, oder aus anderen Materialien selber eins bauen. Zu diesem Thema gibt es im Internet eine reichhaltige Menge an Informationen, die jederzeit abrufbar sind.  
   
@@ -32,7 +40,7 @@ Die Hardware, die benötigt wird:
 * [Schrumpfschlauch](https://www.amazon.de/ChiliTec-12000058-Chilitec-Schrumpfschlauch-Sortiment-100-teilig/dp/B003H9CJ1Y/ref=pd_lpo_60_bs_lp_t_2?_encoding=UTF8&psc=1&refRID=713FAHSKXA3QCSARH8TW) (nicht zwingend nötig, hilft aber beim Isolieren)
   
   
-###3. Zusammenbau<a name="Zusa"><a/>
+###4. Zusammenbau<a name="Zusa"><a/>
 Zuerst wird der Rahmen des Quadrocopters zusammengebaut.  
 Jeder Rahmen ist unterschiedlich aufgebaut. Im Fall des beigelegten Rahmens ist der Aufbau leicht verständlich. Es ist sinnvoll, die untere Platte vorerst nicht zu befestigen, da es dann einfacher ist, die Elektronik einzubauen.  
 ![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Bilder/DSC_0005.JPG)  
@@ -76,7 +84,7 @@ Abschließend ist es von Vorteil, über das Arduino einen Schutz anzubringen, da
 ![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Bilder/DSC_0032_5.JPG)  
   
   
-###4. Code<a name="Code"><a/>
+###5. Code<a name="Code"><a/>
 Um die Drohne verwenden zu können, werden drei Arduino Sketches benötigt.  
 [1. Setup](#Setup)  
 [2. Calibration](#Calib)  
@@ -155,7 +163,7 @@ Darüber befindet sich eine Funktion, die es für den Arduino einfacher macht, d
 Falls noch weitere Unklarheiten bezüglich des flight controllers existieren kann jede Einzelheit [hier](https://github.com/StefanScheunemann/Arduino-Drone/tree/master/Code/Flight_controller) im Code nachgelesen werden. Der gesamte Code ist mit Kommentaren zum besseren Veständnis gefüllt.  
   
   
-##5. PID Kalibrierung<a name="PID"><a/>
+##6. PID Kalibrierung<a name="PID"><a/>
 Die PID Werte sind das Erste, was man sehen wird, sollte man den Code des flight controllers öffnen.  
 Diese PID Werte sind essentiell für die auto level-Funktion des Quadrocpters, die das Besondere an diesem gesamten Projekt ist. Zum Verständis ist es als erstes sinnvoll zu verstehen, wofür PID steht. Wer schnell zu dem Teil springen möchte, in dem erklärt wird, wo und wie man diese Werte anpassen sollte, wird [hier](#PIDmod) weitergeleitet.  
   
@@ -198,7 +206,7 @@ Im letzten Schritt wird der I-Wert erhöht. Dies findet in Schritten von 0.01 st
 Wenn diese Kalibrierung abgeschlossen ist, erhält man einen stabil fliegenden Quadrocopter. Es darf aber nicht vergessen werden, dass nach jedem Umbau und jeder Reparatur diese Prozedur wiederholt werden sollte.  
   
   
-##6. Erster Start<a name="Erst"><a/>
+##7. Erster Start<a name="Erst"><a/>
 Sobald der Sketch auf dem Arduino gespeichert ist, ist die Drohne flugbereit. Beim Start gilt es bestimmte Dinge zu beachten:  
 1. Um den Quadrocopter zu starten, muss an der Fernbedienung der throttle stick in die untere, linke Ecke bewegt werden. Erst ab diesem Moment ist Sicherung deaktiviert.  
 2. Um den Quadrocopter auszuschalten, muss der throttle stick in die untere, rechte Ecke bewegt werden. Dies löst die Sicherung aus und keine weiteren Befehle werden umgesetzt.  
@@ -213,7 +221,7 @@ Ein derartiger Riss kann zum Beispiel so aussehen
 ![alt text](https://github.com/StefanScheunemann/Arduino-Drone/blob/master/Bilder/DSC_0031_5.JPG)  
   
   
-##7. Fehlercodes<a name="Fehler"><a/>
+##8. Fehlercodes<a name="Fehler"><a/>
 Die Fehlercodes beziehen sich auf das Setup und die Kalibrierung. Jeder mögliche Fehler ist in dieser Sektion dokumentiert.  
   
 ####Error 1: No valid receiver signals found  
@@ -253,6 +261,4 @@ Wenn beim Überprüfen der Achsen des Gyroskops an einer Stelle mehrere Achsen g
 Um diesen Fehler zu vermeiden, sollte beim Setup darauf geachtet werden, dass wenn der Quadrocopter in eine bestimmte Richtung gekippt werden soll, immer nur in genau diese Richtung gekippt wird und nicht in mehrere gleichzeitig.  
   
   
-<h2>8. Quellen<a name="Quel"></a></h2>
-Der Code stammt von Herrn Brooking, eine Erklärung zu diesem und der Download können auf seiner <a href="http://www.brokking.net/ymfc-al_main.html/">Website</a> gefunden werden. Der Code ist nicht mein Gedankengut, alle Rechte gehören Herrn Brooking. Auch die schematic für den Schaltkreis in der Drohne stammt nicht von mir und kann auf der angegebenen Webstite gefunden werden.  
-Das verwendete 3D-Modell für den Rahmen des Quadrocopters kann auf Thingiverse <a href="http://www.thingiverse.com/thing:264955/#files">hier</a> gefunden werden, es ist für jeden frei verfügbar. Das Modell wurde nicht von mir erstellt.
+
