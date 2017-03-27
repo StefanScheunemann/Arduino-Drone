@@ -19,10 +19,10 @@ Es handelt sich nicht um ein professionelles, komplett ausgereiftes Industriepro
 
 
 <h2>2. Quellen<a name="Quel"></a></h2>
-Der Code stammt von Herrn Brooking, eine Erklärung zu diesem und der Download können auf seiner <a href="http://www.brokking.net/ymfc-al_main.html/">Website</a> gefunden werden. Auf dieser befindet sich eine Erkärung für die Drohne.<br>
+<p>Der Code stammt von Herrn Brooking, eine Erklärung zu diesem und der Download können auf seiner <a href="http://www.brokking.net/ymfc-al_main.html/">Website</a> gefunden werden. Auf dieser befindet sich eine Erkärung für die Drohne.<br>
 Der Code ist nicht mein Gedankengut, alle Rechte gehören Herrn Brooking. Auch die schematic für den Schaltkreis in der Drohne stammt nicht von mir und kann auf der angegebenen Webstite gefunden werden.<br>
 Das verwendete 3D-Modell für den Rahmen des Quadrocopters kann auf Thingiverse <a href="http://www.thingiverse.com/thing:264955/#files">hier</a> gefunden werden, es ist für jeden frei verfügbar.<br>
-Das Modell wurde nicht von mir erstellt.
+Das Modell wurde nicht von mir erstellt.</p>
   
   
 ###3. Teileliste<a name="Teil"></a>
